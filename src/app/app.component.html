@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1 class="my-5">Upload and Download Files</h1>
+            <fieldset>
+                <legend><small>Select files from your computer</small></legend>
+                <div *ngIf="fileStatus.status === 'progress'" class="progress" role="progressbar"
+                    aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-animated bg-info" [style.width.%]="fileStatus.percent">
+                        {{fileStatus.requestType}} {{fileStatus.percent}}%</div>
+                </div>
+                <hr />
+                <form enctype="multipart/form-data">
+                    <input type="file" (change)="onUploadFiles($any($event).target.files)" class="form-control"
+                        name="files" id="files" multiple />
+                </form>
+
+            </fieldset>
+
+            <ul *ngIf="filenames.length > 0" class="list-group my-4">
+                <span>Processed files</span>
+                <li *ngFor="let filename of filenames" class="list-group-item list-group-item-success" (click)="onDownloadFile(filename)">
+                    {{filename}}<button class="btn alert-success float-end">Download</button>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
