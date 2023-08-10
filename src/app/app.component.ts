@@ -37,7 +37,7 @@ export class AppComponent {
 
 
   //define a function to download file
-  onDownloadFiles(filename: string): void {
+  onDownloadFile(filename: string): void {
     this.fileService.download(filename).subscribe(
       event => {
         console.log(event);

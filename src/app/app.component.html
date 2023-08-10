@@ -18,10 +18,10 @@
 
             </fieldset>
 
-            <ul class="list-group my-4">
+            <ul *ngIf="filenames.length > 0" class="list-group my-4">
                 <span>Processed files</span>
-                <li class="list-group-item list-group-item-success"><button
-                        class="btn alert-success float-end">Download</button>
+                <li *ngFor="let filename of filenames" class="list-group-item list-group-item-success" (click)="onDownloadFile(filename)">
+                    {{filename}}<button class="btn alert-success float-end">Download</button>
                 </li>
 
             </ul>
